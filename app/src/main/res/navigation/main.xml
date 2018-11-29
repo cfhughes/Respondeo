@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main"
+            app:startDestination="@id/loginFragment">
+
+    <fragment
+            android:id="@+id/eventFragment"
+            android:name="me.chrishughes.respondeo.ui.event.EventFragment"
+            android:label="EventFragment" >
+        <argument
+                android:name="id" android:defaultValue="gncncpyzcbhb"/>
+        <argument
+                android:name="groupName" android:defaultValue="Young-Adults-ABQ"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="me.chrishughes.respondeo.ui.login.LoginFragment"
+        android:label="LoginFragment">
+
+    </fragment>
+
+</navigation>
