@@ -18,6 +18,7 @@ package me.chrishughes.respondeo.di
 
 import android.app.Application
 import androidx.room.Room
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import me.chrishughes.respondeo.api.AuthInfo
@@ -25,11 +26,14 @@ import me.chrishughes.respondeo.api.EventService
 import me.chrishughes.respondeo.db.EventDao
 import me.chrishughes.respondeo.db.EventDb
 import me.chrishughes.respondeo.util.LiveDataCallAdapterFactory
+import me.chrishughes.respondeo.vo.Event
+import me.chrishughes.respondeo.vo.EventDeserializer
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
 
 @Module(includes = [ViewModelModule::class])
 class AppModule {
@@ -44,7 +48,7 @@ class AppModule {
     @Provides
     fun providesOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        logging.level = HttpLoggingInterceptor.Level.BODY
 
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(logging)
@@ -55,9 +59,12 @@ class AppModule {
     @Provides
     fun provideEventService(httpClient: OkHttpClient): EventService {
 
+        val gsonBuilder = GsonBuilder()
+        gsonBuilder.registerTypeAdapter(Event::class.java, EventDeserializer())
+
         return Retrofit.Builder()
             .baseUrl("https://api.meetup.com/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .client(httpClient)
             .build()

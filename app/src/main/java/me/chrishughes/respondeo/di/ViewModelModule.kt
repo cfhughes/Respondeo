@@ -18,10 +18,10 @@ package me.chrishughes.respondeo.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import me.chrishughes.respondeo.ui.calendar.CalendarViewModel
 import me.chrishughes.respondeo.ui.event.EventViewModel
 import me.chrishughes.respondeo.viewmodel.EventViewModelFactory
 
@@ -32,12 +32,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(UserViewModel::class)
     abstract fun bindUserViewModel(userViewModel: UserViewModel): ViewModel
-
+*/
     @Binds
     @IntoMap
-    @ViewModelKey(SearchViewModel::class)
-    abstract fun bindSearchViewModel(searchViewModel: SearchViewModel): ViewModel
-*/
+    @ViewModelKey(CalendarViewModel::class)
+    abstract fun bindCalendarViewModel(calendarViewModel: CalendarViewModel): ViewModel
+
     @Binds
     @IntoMap
     @ViewModelKey(EventViewModel::class)

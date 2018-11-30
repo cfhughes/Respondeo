@@ -8,11 +8,20 @@
             android:id="@+id/eventFragment"
             android:name="me.chrishughes.respondeo.ui.event.EventFragment"
             android:label="EventFragment" >
-        <argument
-                android:name="id" android:defaultValue="gncncpyzcbhb"/>
-        <argument
-                android:name="groupName" android:defaultValue="Young-Adults-ABQ"/>
+        <argument android:name="id" />
+        <argument android:name="groupName" />
     </fragment>
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="me.chrishughes.respondeo.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment">
+        <action
+            android:id="@+id/showEvent"
+            destination="@id/eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/loginFragment"

@@ -1,10 +1,7 @@
 package me.chrishughes.respondeo.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import me.chrishughes.respondeo.AppExecutors
-import me.chrishughes.respondeo.api.ApiSuccessResponse
 import me.chrishughes.respondeo.api.AuthInfo
 import me.chrishughes.respondeo.api.EventService
 import me.chrishughes.respondeo.db.EventDao
@@ -40,7 +37,10 @@ class EventRepository @Inject constructor(
             override fun loadFromDb() = eventDao.loadEvents()
 
             //TODO How do I convert this?
-            override fun createCall() = eventService.getUpcomingEvents(authInfo.accessToken,"self")
+            override fun createCall() = eventService.getUpcomingEvents(
+                "Bearer " + authInfo.accessToken,
+                "self"
+            )
 
             override fun onFetchFailed() {
                 eventListRateLimit.reset("EVENTS")
@@ -64,7 +64,7 @@ class EventRepository @Inject constructor(
             override fun createCall() = eventService.getEvent(
                     urlName = urlName,
                     id = id,
-                    authorization = authInfo.accessToken
+                authorization = "Bearer " + authInfo.accessToken
                 )
         }.asLiveData()
     }

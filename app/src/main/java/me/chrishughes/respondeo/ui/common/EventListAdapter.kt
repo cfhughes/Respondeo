@@ -1,9 +1,12 @@
 package me.chrishughes.respondeo.ui.common
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import me.chrishughes.respondeo.AppExecutors
+import me.chrishughes.respondeo.databinding.EventItemBinding
 import me.chrishughes.respondeo.vo.Event
 
 class EventListAdapter(
@@ -23,11 +26,23 @@ class EventListAdapter(
     }
 ) {
     override fun createBinding(parent: ViewGroup): EventItemBinding {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val binding = DataBindingUtil.inflate<EventItemBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.event_item,
+            parent,
+            false,
+            dataBindingComponent
+        )
+        binding.root.setOnClickListener {
+            binding.event?.let {
+                eventClickCallback?.invoke(it)
+            }
+        }
+        return binding
     }
 
     override fun bind(binding: EventItemBinding, item: Event) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        binding.event = item
     }
 
 }

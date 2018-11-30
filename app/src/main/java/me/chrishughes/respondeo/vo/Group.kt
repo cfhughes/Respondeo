@@ -5,11 +5,10 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class Event (
+data class Group(
     @PrimaryKey
     @field:SerializedName("id")
     val id: String,
-    @field:SerializedName("name")
-    val name: String,
-    var groupurl: String
+    @field:SerializedName("urlname")
+    val urlname: String
 )

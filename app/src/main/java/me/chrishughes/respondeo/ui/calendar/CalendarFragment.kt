@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import me.chrishughes.respondeo.AppExecutors
-import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.binding.FragmentDataBindingComponent
+import me.chrishughes.respondeo.databinding.CalendarFragmentBinding
 import me.chrishughes.respondeo.di.Injectable
 import me.chrishughes.respondeo.ui.common.EventListAdapter
 import me.chrishughes.respondeo.util.autoCleared
@@ -34,7 +35,11 @@ class CalendarFragment : Fragment(), Injectable {
 
     lateinit var calendarViewModel: CalendarViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.calendar_fragment,
@@ -49,21 +54,24 @@ class CalendarFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         calendarViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CalendarViewModel::class.java)
-        //initRecyclerView()
+        initRecyclerView()
         val rvAdapter = EventListAdapter(
             dataBindingComponent = dataBindingComponent,
             appExecutors = appExecutors
         ) { event ->
-
-
+            findNavController(this).navigate(
+                CalendarFragmentDirections.showEvent(event.id, event.groupurl)
+            )
         }
+        binding.eventList.adapter = rvAdapter
+        adapter = rvAdapter
     }
 
-
-
-
-
-
-
+    private fun initRecyclerView() {
+        calendarViewModel.results.observe(this, Observer { result ->
+            binding.eventsResource = result
+            adapter.submitList(result?.data)
+        })
+    }
 
 }

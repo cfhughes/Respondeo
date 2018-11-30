@@ -18,6 +18,7 @@ package me.chrishughes.respondeo.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import me.chrishughes.respondeo.ui.calendar.CalendarFragment
 import me.chrishughes.respondeo.ui.event.EventFragment
 import me.chrishughes.respondeo.ui.login.LoginFragment
 
@@ -29,7 +30,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeLoginFragment(): LoginFragment
-/*
+
     @ContributesAndroidInjector
-    abstract fun contributeSearchFragment(): SearchFragment*/
+    abstract fun contributeCalendarFragment(): CalendarFragment
 }

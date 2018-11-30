@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, LoginFragm
                     authInfo.accessToken = access_token
                     val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
                     val controller = navHostFragment.navController
-                    controller.navigate(R.id.eventFragment)
+                    controller.navigate(R.id.calendarFragment)
                 }
                 if (!TextUtils.isEmpty(error)) {
                     //a problem occurs, the user reject our granting request or something like that
