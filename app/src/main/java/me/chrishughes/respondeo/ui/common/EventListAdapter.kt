@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import me.chrishughes.respondeo.AppExecutors
+import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.databinding.EventItemBinding
 import me.chrishughes.respondeo.vo.Event
 

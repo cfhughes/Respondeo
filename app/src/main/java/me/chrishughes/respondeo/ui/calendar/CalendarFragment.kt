@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import me.chrishughes.respondeo.AppExecutors
+import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.binding.FragmentDataBindingComponent
 import me.chrishughes.respondeo.databinding.CalendarFragmentBinding
 import me.chrishughes.respondeo.di.Injectable
@@ -70,7 +71,7 @@ class CalendarFragment : Fragment(), Injectable {
     private fun initRecyclerView() {
         calendarViewModel.results.observe(this, Observer { result ->
             binding.eventsResource = result
-            adapter.submitList(result?.data)
+            adapter.submitList(result.data)
         })
     }
 
