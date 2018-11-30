@@ -79,4 +79,6 @@ dependencies {
 
     implementation 'net.openid:appauth:0.7.1'
 
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 }

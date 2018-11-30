@@ -27,23 +27,23 @@ class EventRepository @Inject constructor(
 
     private val eventListRateLimit = RateLimiter<String>(10, TimeUnit.MINUTES)
 
-    fun loadEvents(owner: String): LiveData<Resource<List<Event>>> {
+    fun loadEvents(): LiveData<Resource<List<Event>>> {
         return object : NetworkBoundResource<List<Event>, List<Event>>(appExecutors) {
             override fun saveCallResult(item: List<Event>) {
                 eventDao.insertEvents(item)
             }
 
             override fun shouldFetch(data: List<Event>?): Boolean {
-                return data == null || eventListRateLimit.shouldFetch(owner)
+                return data == null || eventListRateLimit.shouldFetch("EVENTS")
             }
 
             override fun loadFromDb() = eventDao.loadEvents()
 
             //TODO How do I convert this?
-            override fun createCall() = eventService.getUpcomingEvents("","")
+            override fun createCall() = eventService.getUpcomingEvents(authInfo.accessToken,"self")
 
             override fun onFetchFailed() {
-                eventListRateLimit.reset(owner)
+                eventListRateLimit.reset("EVENTS")
             }
         }.asLiveData()
     }
@@ -64,7 +64,6 @@ class EventRepository @Inject constructor(
             override fun createCall() = eventService.getEvent(
                     urlName = urlName,
                     id = id,
-                    //TODO Authorization
                     authorization = authInfo.accessToken
                 )
         }.asLiveData()

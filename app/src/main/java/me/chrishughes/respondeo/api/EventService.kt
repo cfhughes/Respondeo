@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface EventService {
 
-    @GET("2/concierge")
+    @GET("/self/calendar")
     fun getUpcomingEvents(
         @Header("Authorization") authorization: String,
         @Query("fields") fields: String
