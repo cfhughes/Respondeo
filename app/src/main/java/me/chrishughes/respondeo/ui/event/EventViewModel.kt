@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import me.chrishughes.respondeo.repository.EventRepository
 import me.chrishughes.respondeo.util.AbsentLiveData
 import me.chrishughes.respondeo.vo.Event
+import me.chrishughes.respondeo.vo.Member
 import me.chrishughes.respondeo.vo.Resource
 import javax.inject.Inject
 
@@ -24,6 +25,13 @@ class EventViewModel @Inject constructor(repository: EventRepository) : ViewMode
                     id = input.id,
                     urlName = input.groupName)
             }
+        }
+    val rsvps: LiveData<Resource<List<Member>>> = Transformations
+        .switchMap(_eventId) {input ->
+            input.ifExists { groupName, id ->
+                repository.loadRsvps(groupName, id)
+            }
+
         }
 
     fun setId(id: String, groupName: String) {

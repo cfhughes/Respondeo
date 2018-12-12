@@ -11,6 +11,12 @@ internal class EventDeserializer : JsonDeserializer<Event> {
         val message: Event = Gson().fromJson(je, Event::class.java)
         val groupurl = content.get("group").asJsonObject.get("urlname")
         message.groupurl = groupurl.asString
+        if (content.get("self").asJsonObject.has("rsvp")) {
+            message.rsvpResponse = content.get("self").asJsonObject.get("rsvp").asJsonObject.get("response").asString
+        }else{
+            message.rsvpResponse = "no"
+        }
+        message.rsvpEnabled = true
         return message
     }
 }

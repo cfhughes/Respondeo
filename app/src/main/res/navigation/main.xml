@@ -19,7 +19,8 @@
         <action
             android:id="@+id/showEvent"
             destination="@id/eventFragment"
-            app:destination="@id/eventFragment" />
+            app:destination="@id/eventFragment"
+            app:launchSingleTop="true"/>
     </fragment>
 
 

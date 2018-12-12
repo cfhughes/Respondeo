@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Respondeo</string>
     <string name="login_with_meetup">Login With Meetup</string>
+    <string name="image_of_member">image of member</string>
 </resources>

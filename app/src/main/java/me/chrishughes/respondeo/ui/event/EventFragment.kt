@@ -30,17 +30,11 @@ class EventFragment : Fragment(), Injectable {
     @Inject
     lateinit var appExecutors: AppExecutors
 
+    private var adapter by autoCleared<UsersRsvpAdapter>()
+
     // mutable for testing
     var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
     var binding by autoCleared<EventFragmentBinding>()
-
-    //TODO Rsvps?
-    //private var adapter by autoCleared<ContributorAdapter>()
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -56,16 +50,23 @@ class EventFragment : Fragment(), Injectable {
         event?.observe(this, Observer { resource ->
             binding.event = resource.data
             binding.eventResource = resource
+            binding.eventDescription.loadData(binding.event?.description, "text/html", "UTF-8")
         })
 
-        /*val adapter = ContributorAdapter(dataBindingComponent, appExecutors) { contributor ->
-            navController().navigate(
-                RepoFragmentDirections.showUser(contributor.login)
-            )
-        }
+        val adapter = UsersRsvpAdapter(dataBindingComponent, appExecutors)
         this.adapter = adapter
-        binding.contributorList.adapter = adapter
-        initContributorList(repoViewModel)*/
+        binding.rsvpsView.adapter = adapter
+        initRsvpList(eventViewModel)
+    }
+
+    private fun initRsvpList(viewModel: EventViewModel) {
+        viewModel.rsvps.observe(viewLifecycleOwner, Observer { listResource ->
+            if (listResource?.data != null) {
+                adapter.submitList(listResource.data)
+            } else {
+                adapter.submitList(emptyList())
+            }
+        })
     }
 
     override fun onCreateView(

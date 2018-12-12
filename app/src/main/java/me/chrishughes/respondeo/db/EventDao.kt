@@ -21,6 +21,9 @@ abstract class EventDao {
     )
     abstract fun loadEvents(): LiveData<List<Event>>
 
+    @Query("DELETE FROM Event")
+    abstract fun deleteAll()
+
     @Query("SELECT * FROM Event WHERE id = :id")
     abstract fun load(id: String): LiveData<Event>
 

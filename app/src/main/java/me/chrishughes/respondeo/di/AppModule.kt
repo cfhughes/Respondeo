@@ -25,9 +25,13 @@ import me.chrishughes.respondeo.api.AuthInfo
 import me.chrishughes.respondeo.api.EventService
 import me.chrishughes.respondeo.db.EventDao
 import me.chrishughes.respondeo.db.EventDb
+import me.chrishughes.respondeo.db.MemberDao
+import me.chrishughes.respondeo.db.MemberRsvpDao
 import me.chrishughes.respondeo.util.LiveDataCallAdapterFactory
 import me.chrishughes.respondeo.vo.Event
 import me.chrishughes.respondeo.vo.EventDeserializer
+import me.chrishughes.respondeo.vo.Member
+import me.chrishughes.respondeo.vo.RsvpDeserializer
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -61,6 +65,7 @@ class AppModule {
 
         val gsonBuilder = GsonBuilder()
         gsonBuilder.registerTypeAdapter(Event::class.java, EventDeserializer())
+        gsonBuilder.registerTypeAdapter(Member::class.java, RsvpDeserializer())
 
         return Retrofit.Builder()
             .baseUrl("https://api.meetup.com/")
@@ -84,6 +89,18 @@ class AppModule {
     @Provides
     fun provideEventDao(db: EventDb): EventDao {
         return db.eventDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMemberDao(db: EventDb): MemberDao {
+        return db.memberDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMemberRsvpDao(db: EventDb): MemberRsvpDao {
+        return db.memberRsvpDao()
     }
 
     /*@Singleton
