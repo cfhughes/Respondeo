@@ -1,7 +1,6 @@
 package me.chrishughes.respondeo.vo
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
@@ -17,6 +16,5 @@ data class Event (
     @field:SerializedName("description")
     var description: String,
     var groupurl: String,
-    var rsvpResponse: String,
-    var rsvpEnabled: Boolean
+    var rsvpResponse: String
 )

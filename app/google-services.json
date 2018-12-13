@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "621888204949",
+    "firebase_url": "https://respondeo-ffc02.firebaseio.com",
+    "project_id": "respondeo-ffc02",
+    "storage_bucket": "respondeo-ffc02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621888204949:android:23add613fd61dc51",
+        "android_client_info": {
+          "package_name": "me.chrishughes.respondeo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621888204949-lpitvnnm603pgkup9imphck0dphigk7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKYAj33eSyBRDiOClSxT7pDnWnn4oxNM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

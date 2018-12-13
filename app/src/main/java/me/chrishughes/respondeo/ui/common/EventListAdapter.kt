@@ -3,6 +3,7 @@ package me.chrishughes.respondeo.ui.common
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -15,7 +16,7 @@ import me.chrishughes.respondeo.vo.Event
 class EventListAdapter(
     private val dataBindingComponent: DataBindingComponent,
     appExecutors: AppExecutors,
-    private val rsvpCheckCallback: ((Event) -> Unit)?,
+    private val rsvpCheckCallback: ((Event, CompoundButton) -> Unit)?,
     private val eventClickCallback: ((Event) -> Unit)?
 ) : DataBoundListAdapter<Event, EventItemBinding>(
     appExecutors = appExecutors,
@@ -42,9 +43,9 @@ class EventListAdapter(
                 eventClickCallback?.invoke(it)
             }
         }
-        binding.listEventRsvp.setOnCheckedChangeListener {buttonView, isChecked ->
+        binding.listEventRsvp.setOnClickListener { buttonView ->
             binding.event?.let {
-                rsvpCheckCallback?.invoke(it)
+                rsvpCheckCallback?.invoke(it, buttonView as CompoundButton)
             }
         }
         return binding
@@ -59,6 +60,9 @@ class EventListAdapter(
             )
         )
         binding.listEventIcon.setText(String.format("%s", item.groupurl[0]))
+        binding.listEventRsvp.isChecked =
+                binding.event?.rsvpResponse == "yes" || binding.event?.rsvpResponse == "waitlist"
+                || binding.event?.rsvpResponse == "yes_pending_payment"
     }
 
 }

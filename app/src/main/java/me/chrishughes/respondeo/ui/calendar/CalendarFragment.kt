@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.databinding.DataBindingComponent
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.google.firebase.analytics.FirebaseAnalytics
 import me.chrishughes.respondeo.AppExecutors
 import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.api.AuthInfo
@@ -74,60 +76,72 @@ class CalendarFragment : Fragment(), Injectable {
         val rvAdapter = EventListAdapter(
             dataBindingComponent = dataBindingComponent,
             appExecutors = appExecutors,
-            rsvpCheckCallback = {event: Event ->
-                event.rsvpEnabled = false;
-                if (event.rsvpResponse == "yes"){
+            rsvpCheckCallback = { event: Event, checkBox: CompoundButton ->
+                checkBox.isEnabled = false
+                if (event.rsvpResponse == "yes" || event.rsvpResponse == "waitlist" || event.rsvpResponse == "yes_pending_payment") {
                     eventService.sendRsvp(
-                        authorization = authInfo.accessToken,
+                        authorization = "Bearer " + authInfo.accessToken,
                         urlName = event.groupurl,
                         id = event.id,
                         response = "no"
                     ).enqueue(object : Callback<RsvpResult> {
                         override fun onFailure(call: Call<RsvpResult>, t: Throwable) {
                             Toast.makeText(context, "An error occured", LENGTH_LONG).show()
-                            event.rsvpResponse = "yes"
+                            checkBox.isChecked = true
+                            checkBox.isEnabled = true;
                         }
 
                         override fun onResponse(call: Call<RsvpResult>, response: Response<RsvpResult>) {
-                            event.rsvpEnabled = true;
-                            if (response.body()!!.response == "no"){
+                            if (response.body()?.response == "no") {
                                 event.rsvpResponse = "no"
                             }else{
                                 Toast.makeText(context, "An error occured", LENGTH_LONG).show()
-                                event.rsvpResponse = "yes"
+                                checkBox.isChecked = true
                             }
+                            checkBox.isEnabled = true;
                         }
 
                     })
                 }else{
                     eventService.sendRsvp(
-                        authorization = authInfo.accessToken,
+                        authorization = "Bearer " + authInfo.accessToken,
                         urlName = event.groupurl,
                         id = event.id,
                         response = "yes"
                     ).enqueue(object : Callback<RsvpResult> {
                         override fun onFailure(call: Call<RsvpResult>, t: Throwable) {
                             Toast.makeText(context, "An error occured", LENGTH_LONG).show()
-                            event.rsvpResponse = "no"
+                            checkBox.isEnabled = true;
                         }
 
                         override fun onResponse(call: Call<RsvpResult>, response: Response<RsvpResult>) {
-                            event.rsvpEnabled = true;
                             if (!response.isSuccessful){
                                 Toast.makeText(context, "An error occured "+response.errorBody(), LENGTH_LONG).show()
-                                event.rsvpResponse = "no"
-                            }else if (response.body()!!.response == "yes"){
+                                checkBox.isChecked = false;
+                            } else if (response.body()?.response == "yes") {
                                 event.rsvpResponse = "yes"
+                            } else if (response.body()?.response == "waitlist") {
+                                event.rsvpResponse = "waitlist"
+                                Toast.makeText(context, "You have been waitlisted", LENGTH_LONG).show()
+                            } else if (response.body()?.response == "yes_pending_payment") {
+                                event.rsvpResponse = "yes_pending_payment"
+                                Toast.makeText(context, "You will still need to pay for this event", LENGTH_LONG).show()
                             }else{
                                 Toast.makeText(context, "An error occured", LENGTH_LONG).show()
-                                event.rsvpResponse = "no"
+                                checkBox.isChecked = false;
                             }
+                            checkBox.isEnabled = true;
                         }
 
                     })
                 }
             }
         ) { event ->
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, event.id)
+            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, event.name)
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "event")
+            FirebaseAnalytics.getInstance(activity!!).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
             findNavController(this).navigate(
                 CalendarFragmentDirections.showEvent(event.id, event.groupurl)
             )

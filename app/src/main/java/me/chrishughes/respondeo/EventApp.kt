@@ -2,7 +2,6 @@ package me.chrishughes.respondeo;
 
 import android.app.Activity
 import android.app.Application
-import com.facebook.stetho.Stetho
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import me.chrishughes.respondeo.di.AppInjector
@@ -15,7 +14,7 @@ class EventApp : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         AppInjector.init(this)
-        Stetho.initializeWithDefaults(this);
+        //Stetho.initializeWithDefaults(this);
     }
 
     override fun activityInjector() = dispatchingAndroidInjector

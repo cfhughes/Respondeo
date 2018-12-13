@@ -16,7 +16,6 @@ internal class EventDeserializer : JsonDeserializer<Event> {
         }else{
             message.rsvpResponse = "no"
         }
-        message.rsvpEnabled = true
         return message
     }
 }
