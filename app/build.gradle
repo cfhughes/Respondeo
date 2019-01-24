@@ -69,7 +69,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     implementation "com.github.bumptech.glide:okhttp3-integration:4.8.0"
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha09'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha11'
 
 
     implementation "androidx.lifecycle:lifecycle-runtime:2.0.0"

@@ -43,7 +43,7 @@ class EventFragment : Fragment(), Injectable {
 
         eventViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(EventViewModel::class.java)
-        val params = EventFragmentArgs.fromBundle(arguments)
+        val params = EventFragmentArgs.fromBundle(arguments!!)
         eventViewModel.setId(params.id,params.groupName)
 
         val event = eventViewModel.event
