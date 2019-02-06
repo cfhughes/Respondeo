@@ -48,7 +48,7 @@ class EventRepository @Inject constructor(
             override fun createCall() = eventService.getUpcomingEvents(
                 "Bearer " + authInfo.accessToken,
                 "self",
-                30
+                90
             )
 
             override fun onFetchFailed() {
@@ -88,7 +88,8 @@ class EventRepository @Inject constructor(
                 item.forEach {
                     memberRsvpDao.insert(MemberRsvp(
                         eventId = id,
-                        memberId = it.id
+                        memberId = it.id,
+                        guests = it.guests
                     ))
                 }
 

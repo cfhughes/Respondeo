@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="rsvp"
             type="me.chrishughes.respondeo.vo.Member"/>
@@ -17,7 +18,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="8dp">
 
             <ImageView
                 app:imageUrl="@{rsvp.photoLink}"
@@ -32,12 +34,22 @@
             />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textAppearance="?android:attr/textAppearanceListItem"
                 android:text="@{rsvp.memberName}"
+                android:layout_weight="1"
                 tools:text="John Smith"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:text="@{'+'+Integer.toString(rsvp.guests)}"
+                android:visibility="@{rsvp.guests &lt; 1 ? View.GONE : View.VISIBLE}"
+                tools:text="+1"/>
 
 
         </LinearLayout>

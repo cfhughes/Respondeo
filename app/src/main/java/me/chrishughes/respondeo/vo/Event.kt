@@ -14,7 +14,7 @@ data class Event (
     @field:SerializedName("local_time")
     var time: String,
     @field:SerializedName("description")
-    var description: String,
+    var description: String?,
     var groupurl: String,
     var rsvpResponse: String
 )

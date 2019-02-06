@@ -13,6 +13,6 @@ abstract class MemberDao {
     abstract fun insert(vararg members: Member)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(members: List<Member>)
-    @Query("SELECT m.* FROM member AS m INNER JOIN MemberRsvp AS r ON m.id = r.memberId AND r.eventId = :eventId")
+    @Query("SELECT m.id,m.memberName,m.photoLink,r.guests FROM member AS m INNER JOIN MemberRsvp AS r ON m.id = r.memberId AND r.eventId = :eventId")
     abstract fun rsvpsForEvent(eventId: String) : LiveData<List<Member>>
 }

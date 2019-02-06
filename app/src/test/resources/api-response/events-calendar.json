@@ -1,0 +1,123 @@
+[
+  {
+    "created": 1506442030000,
+    "id": "zdxxtnyzdbhb",
+    "name": "Geeks Who Drink Trivia @ Red Door Brewing (Downtown Taproom)",
+    "self": {
+      "role": "coorganizer",
+      "actions": [
+        "download_attendees",
+        "invite",
+        "close",
+        "cancel",
+        "upload_photo",
+        "delete",
+        "email_attendees",
+        "edit_hosts",
+        "edit",
+        "comment",
+        "copy",
+        "rsvp"
+      ],
+      "rsvp": {
+        "response": "yes",
+        "guests": 1
+      }
+    },
+    "date_in_series_pattern": false,
+    "status": "upcoming",
+    "time": 1549417500000,
+    "local_date": "2019-02-05",
+    "local_time": "18:45",
+    "updated": 1506442030000,
+    "utc_offset": -25200000,
+    "waitlist_count": 0,
+    "yes_rsvp_count": 7,
+    "venue": {
+      "id": 24891786,
+      "name": "Red Door Brewing Company",
+      "lat": 35.08000183105469,
+      "lon": -106.6500015258789,
+      "repinned": false,
+      "address_1": "400 Gold Ave SW #105",
+      "city": "Albuquerque ",
+      "country": "us",
+      "localized_country_name": "USA",
+      "zip": "87102",
+      "state": "NM"
+    },
+    "group": {
+      "created": 1291338555000,
+      "name": "Young Adults in ABQ",
+      "id": 1745766,
+      "join_mode": "approval",
+      "lat": 35.06999969482422,
+      "lon": -106.5,
+      "urlname": "Young-Adults-ABQ",
+      "who": "Young Adults",
+      "localized_location": "Albuquerque, NM",
+      "state": "NM",
+      "country": "us",
+      "region": "en_US",
+      "timezone": "US/Mountain"
+    },
+    "link": "https://www.meetup.com/Young-Adults-ABQ/events/zdxxtnyzdbhb/",
+    "description": "<p>*IMPORTANT* Trivia is held at the Red Door location that's downtown. It's at the intersection of 4th and Gold.</p> <p>Let's meet up for pub trivia at Red Door Brewing Company's Downtown Taproom. The quiz starts at 7, so please show up a little before that. We can have up to six people on a team. If more people than that sign up we will split into multiple teams. Cell phones must be put away during quiz rounds (you can use them during scoring breaks).</p> <p>For those who have never been to a Geeks Who Drink Trivia Night:<br/>The quiz consists of eight rounds of eight questions each, played by teams of up to six people. Questions are read aloud by the quizmaster and teams write down the answers, turning them in at the end of each round.</p> <p>Rounds 1, 4 and 6 are themed rounds \u2013 anything from \u201cEight Questions About Sex That Won\u2019t Make You Too Uncomfortable\u201d to \u201cTV Shows Your Parents Watch.\u201d Round 2 is a music round worth double points: name the artist and title for each song clip. Round 3 is a multiple choice round or a speed round. Round 5 is a visual round based on a printed handout. The all-audio Round 7 usually covers movies or TV shows, and is worth the standard eight points. Finally, Round 8 is always 16 points on Random Knowledge.</p> <p>One round can be jokered, doubling your points for that round only (yes, the 16-point rounds are fair game). The team with the most points after eight rounds is the winner.</p> ",
+    "how_to_find_us": "Generally speaking, look to the right as you enter the bar. We tend to take the tables against the windows.",
+    "visibility": "public_limited"
+  },
+  {
+    "created": 1534359155000,
+    "duration": 7200000,
+    "id": "kddscqyzdbkb",
+    "name": "Roadrunner Practica - Practica not running until October 10th",
+    "self": {
+      "actions": [
+        "invite",
+        "upload_photo",
+        "comment",
+        "rsvp"
+      ]
+    },
+    "date_in_series_pattern": false,
+    "status": "upcoming",
+    "time": 1549596600000,
+    "local_date": "2019-02-07",
+    "local_time": "20:30",
+    "updated": 1534359155000,
+    "utc_offset": -25200000,
+    "waitlist_count": 0,
+    "yes_rsvp_count": 1,
+    "venue": {
+      "id": 13712292,
+      "name": "Las Puertas",
+      "lat": 35.0981559753418,
+      "lon": -106.64532470703125,
+      "repinned": false,
+      "address_1": "1512 1st St. NW, Albuquerque, NM",
+      "city": "Albuquerque",
+      "country": "us",
+      "localized_country_name": "USA",
+      "zip": "87102",
+      "state": "NM"
+    },
+    "group": {
+      "created": 1481076525000,
+      "name": "Argentine Tango school \"Bien Milonguero\"",
+      "id": 21500444,
+      "join_mode": "open",
+      "lat": 35.08000183105469,
+      "lon": -106.6500015258789,
+      "urlname": "BienMilonguero",
+      "who": "Tangueros",
+      "localized_location": "Albuquerque, NM",
+      "state": "NM",
+      "country": "us",
+      "region": "en_US",
+      "timezone": "US/Mountain"
+    },
+    "link": "https://www.meetup.com/BienMilonguero/events/kddscqyzdbkb/",
+    "description": "<p>The perfect place to practice your Tango, no matter if you are a Tango newborn or have years of experience, we build a place for practice that everybody can enjoy it.</p> <p>5$ - p/ person<br/>3$ for Bien Milonguero Students</p> ",
+    "visibility": "public"
+  }
+]

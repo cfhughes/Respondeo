@@ -1,6 +1,7 @@
 package me.chrishughes.respondeo.vo
 
 import androidx.room.Entity
+import androidx.room.Ignore
 
 @Entity(
     primaryKeys = ["id"]
@@ -8,5 +9,6 @@ import androidx.room.Entity
 data class Member(
     var id: Long,
     var memberName: String,
-    var photoLink: String
+    var photoLink: String,
+    var guests: Int
 )

@@ -3,4 +3,5 @@
     <string name="login_with_meetup">Login With Meetup</string>
     <string name="image_of_member">image of member</string>
   <string name="logout">Logout</string>
+    <string name="rsvp_guests">%d</string>
 </resources>

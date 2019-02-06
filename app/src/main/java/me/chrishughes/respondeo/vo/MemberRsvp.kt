@@ -22,5 +22,6 @@ import androidx.room.Index
 )
 data class MemberRsvp(
     val eventId: String,
-    val memberId: Long
+    val memberId: Long,
+    val guests: Int
 )
