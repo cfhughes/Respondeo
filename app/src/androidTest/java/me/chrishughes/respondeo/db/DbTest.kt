@@ -2,7 +2,7 @@ package me.chrishughes.respondeo.db
 
 import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 import androidx.room.Room
-import androidx.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -19,7 +19,7 @@ abstract class DbTest {
     @Before
     fun initDb() {
         _db = Room.inMemoryDatabaseBuilder(
-            InstrumentationRegistry.getContext(),
+            InstrumentationRegistry.getInstrumentation().context,
             EventDb::class.java
         ).build()
     }
