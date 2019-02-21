@@ -78,7 +78,7 @@ class EventServiceTest {
         val yigit = (getValue(service.getUpcomingEvents("yigit","self",90)) as ApiSuccessResponse).body
 
         val request = mockWebServer.takeRequest()
-        assertThat(request.path, `is`("/self/calendar?fields=self&page=30"))
+        assertThat(request.path, `is`("/self/calendar?fields=self&page=90"))
 
         assertThat<List<Event>>(yigit, notNullValue())
         assertThat(yigit[0].id, `is`("zdxxtnyzdbhb"))

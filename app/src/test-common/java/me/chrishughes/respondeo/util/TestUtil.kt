@@ -27,6 +27,7 @@ object TestUtil {
         description = description,
         groupurl = "SomeGroup",
         time = "12:30",
+        date = "2019-03-02",
         id = id,
         rsvpResponse = "yes"
     )
@@ -34,7 +35,8 @@ object TestUtil {
     fun createMember(id: Long) = Member(
         id = id,
         memberName = "Bob $id",
-        photoLink = "link/$id"
+        photoLink = "link/$id",
+        guests = 1
     )
 
     /*fun createRepos(count: Int, owner: String, name: String, description: String): List<Repo> {
@@ -66,6 +68,7 @@ object TestUtil {
 
     fun createMemberRsvp(event: Event, member: Member) = MemberRsvp(
         eventId = event.id,
-        memberId = member.id
+        memberId = member.id,
+        guests = 1
     )
 }

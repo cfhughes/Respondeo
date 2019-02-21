@@ -13,6 +13,8 @@ data class Event (
     val name: String,
     @field:SerializedName("local_time")
     var time: String,
+    @field:SerializedName("local_date")
+    var date: String,
     @field:SerializedName("description")
     var description: String?,
     var groupurl: String,

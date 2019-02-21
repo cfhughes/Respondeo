@@ -25,7 +25,7 @@ class LoginFragment : Fragment(), Injectable {
             false
         )
 
-        dataBinding.loginButton.setOnClickListener {v ->
+        dataBinding.loginButton.setOnClickListener {
             run {
                 loginProvider.doLogin()
             }
