@@ -36,7 +36,7 @@ object TestUtil {
         id = id,
         memberName = "Bob $id",
         photoLink = "link/$id",
-        guests = 1
+        guests = (id % 2).toInt()
     )
 
     /*fun createRepos(count: Int, owner: String, name: String, description: String): List<Repo> {

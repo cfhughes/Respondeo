@@ -1,6 +1,5 @@
 package me.chrishughes.respondeo.ui.event
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import me.chrishughes.respondeo.databinding.EventFragmentBinding
 import me.chrishughes.respondeo.AppExecutors
 import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.binding.FragmentDataBindingComponent
+import me.chrishughes.respondeo.databinding.EventFragmentBinding
 import me.chrishughes.respondeo.di.Injectable
+import me.chrishughes.respondeo.testing.OpenForTesting
 import me.chrishughes.respondeo.ui.common.RetryCallback
 import me.chrishughes.respondeo.util.autoCleared
 import javax.inject.Inject
 
+@OpenForTesting
 class EventFragment : Fragment(), Injectable {
 
     @Inject

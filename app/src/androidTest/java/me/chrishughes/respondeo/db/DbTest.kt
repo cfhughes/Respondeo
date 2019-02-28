@@ -2,7 +2,7 @@ package me.chrishughes.respondeo.db
 
 import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 import androidx.room.Room
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.InstrumentationRegistry
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

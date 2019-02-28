@@ -1,7 +1,7 @@
 package me.chrishughes.respondeo.db
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import me.chrishughes.respondeo.util.LiveDataTestUtil.getValue
 import me.chrishughes.respondeo.util.TestUtil
 import org.hamcrest.CoreMatchers
