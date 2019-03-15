@@ -1,7 +1,7 @@
 package me.chrishughes.respondeo.db
 
 import android.database.sqlite.SQLiteException
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import me.chrishughes.respondeo.util.TestUtil
 import org.junit.Test
 import org.junit.runner.RunWith

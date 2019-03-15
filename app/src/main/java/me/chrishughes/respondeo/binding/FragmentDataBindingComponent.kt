@@ -18,7 +18,6 @@ package me.chrishughes.respondeo.binding
 
 import androidx.databinding.DataBindingComponent
 import androidx.fragment.app.Fragment
-import me.chrishughes.respondeo.binding.FragmentBindingAdapters
 
 /**
  * A Data Binding Component implementation for fragments.
