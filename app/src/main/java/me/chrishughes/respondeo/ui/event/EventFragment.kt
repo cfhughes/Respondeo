@@ -15,27 +15,25 @@ import me.chrishughes.respondeo.R
 import me.chrishughes.respondeo.binding.FragmentDataBindingComponent
 import me.chrishughes.respondeo.databinding.EventFragmentBinding
 import me.chrishughes.respondeo.di.Injectable
-import me.chrishughes.respondeo.testing.OpenForTesting
 import me.chrishughes.respondeo.ui.common.RetryCallback
 import me.chrishughes.respondeo.util.autoCleared
 import javax.inject.Inject
 
-@OpenForTesting
 class EventFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var eventViewModel: EventViewModel
-
     @Inject
     lateinit var appExecutors: AppExecutors
 
-    private var adapter by autoCleared<UsersRsvpAdapter>()
-
-    // mutable for testing
     var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+
     var binding by autoCleared<EventFragmentBinding>()
+
+    var adapter by autoCleared<UsersRsvpAdapter>()
+
+    lateinit var eventViewModel: EventViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

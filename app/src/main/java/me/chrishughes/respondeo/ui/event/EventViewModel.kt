@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import me.chrishughes.respondeo.repository.EventRepository
-import me.chrishughes.respondeo.testing.OpenForTesting
 import me.chrishughes.respondeo.util.AbsentLiveData
 import me.chrishughes.respondeo.vo.Event
 import me.chrishughes.respondeo.vo.Member
 import me.chrishughes.respondeo.vo.Resource
 import javax.inject.Inject
 
-@OpenForTesting
 class EventViewModel @Inject constructor(repository: EventRepository) : ViewModel() {
     private val _eventId: MutableLiveData<EventId> = MutableLiveData()
     val eventId: LiveData<EventId>

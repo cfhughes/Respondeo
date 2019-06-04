@@ -21,8 +21,8 @@ android {
         applicationId "me.chrishughes.respondeo"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "0.1-beta"
+        versionCode 2
+        versionName "0.2"
         testInstrumentationRunner "me.chrishughes.respondeo.util.RespondeoTestRunner"
         manifestPlaceholders = [
                 'appAuthRedirectScheme': 'me.chrishughes.respondeo'
@@ -36,7 +36,7 @@ android {
             testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -58,9 +58,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
-    implementation "androidx.room:room-runtime:2.1.0-alpha03"
+    implementation "androidx.room:room-runtime:2.1.0-rc01"
     implementation "androidx.lifecycle:lifecycle-runtime:2.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.0.0"
@@ -72,11 +72,11 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.16'
     implementation 'com.google.dagger:dagger-android:2.16'
     implementation 'com.google.dagger:dagger-android-support:2.16' // if you use the support libraries
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 
     kapt 'com.google.dagger:dagger-android-processor:2.16'
     kapt 'com.google.dagger:dagger-compiler:2.16'
-    kapt "androidx.room:room-compiler:2.1.0-alpha03"
+    kapt "androidx.room:room-compiler:2.1.0-rc01"
     kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 
 
@@ -95,25 +95,27 @@ dependencies {
 
     implementation 'com.android.support:customtabs:28.0.0'
 
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
 
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.13.1'
 
-    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+    testImplementation 'androidx.arch.core:core-testing:2.0.1'
 
-    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.0'
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
-    androidTestImplementation 'androidx.test:rules:1.1.2-alpha02'
+    testImplementation 'org.mockito:mockito-core:2.25.0'
+
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0-beta01'
 
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-beta01'
 
-    androidTestImplementation 'androidx.arch.core:core-testing:2.0.0'
-    androidTestImplementation 'org.mockito:mockito-core:2.22.0'
-    androidTestImplementation 'org.mockito:mockito-android:2.22.0'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.0.1'
+    androidTestImplementation 'org.mockito:mockito-core:2.25.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.25.0'
 
 
 }
